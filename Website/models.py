@@ -45,6 +45,6 @@ class Merchant(models.Model):
 	bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
 	
 
-
+# print "Chalti kya"
 
 
