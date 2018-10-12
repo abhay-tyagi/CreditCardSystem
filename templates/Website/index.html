@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="container">
+
+		<p>Hi, {{user.get_full_name}}</p>
+ 
+		<a href="/scanCard/" class="ui red button">Begin Transaction</a>
+	</div>
+
+{% endblock %}

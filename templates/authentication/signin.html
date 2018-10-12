@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if flag == 1 %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+					<a href="/authentication/signin/customer" class="ui large black button" id='customerBtn'>Customer</a>
+			</div>
+			<div class="col-sm-6">
+					<a href="/authentication/signin/merchant" class="ui large black button" id='merchantBtn'>Merchant</a>
+			</div>
+		</div>
+	</div>
+
+{% else %}
+	
+		<div class="container">
+            <form class="form-horizontal" method="POST">
+              {% csrf_token %}
+                <span id="reauth-email" class="reauth-email"></span>
+                <div class='form-group'>
+                    <label class="control-label col-sm-2" for="inputEmail">Email: </label>
+                    <div class='col-sm-10'>
+                        <input autocomplete="off" name='username' type="username" id="inputEmail" class="form-control" placeholder="Enter Username" required autofocus>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class="control-label col-sm-2" for="inputPassword">Password: </label>
+                    <div class='col-sm-10'>
+                        <input autocomplete="off" name='password' type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
+                    </div>
+                </div>
+
+                <input value="{{flag}}" name='category' class="hidden">
+
+                <button class="ui large teal button" type="submit">Sign in</button>
+            </form>
+        </div>
+
+		<button type='button' class='' data-toggle="modal" data-target="#regModal{{flag}}">or Signup</button>
+
+
+
+		<div class="container">
+	  		<div class="modal fade" id="regModalmerchant" role="dialog">
+	    		<div class="modal-dialog">
+	      			<div class="modal-content">
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	          				<h4 class="modal-title">Sign Up</h4>
+	        			</div>
+
+	        			<div class="modal-body">
+							<form method="post" action="/authentication/signup/" role="form" id="user_form" enctype='multipart/form-data'>
+							{% csrf_token %}
+						        <div class="form-group">
+						        	<label class="control-label" for="signupName"><span class="glyphicon glyphicon-user"></span>  Full Name</label>
+					              	<input id="name" name="fullname" type="text" maxlength="50" class="form-control" required>
+					            </div>
+
+					            <div class="form-group">
+					            	<label class="control-label" for="signupEmail"><span class='glyphicon glyphicon-envelope'></span> Email</label>
+					              	<input name="email" type="email" maxlength="50" class="form-control" required>
+					            </div>
+					            <div class="form-group">
+					            	<label class="control-label" for="signupPassword"><span class="glyphicon glyphicon-eye-open"> Password</label>
+					              	<input id='pass' name="password" type="password" maxlength="25" class="form-control" placeholder="At least 6 characters" length="40" required>
+				            	</div>
+					            <div class="form-group">
+					            	<label class="control-label" for="signupPassword"><span class="glyphicon glyphicon-eye-open"> Re-enter Password</label>
+					              	<input id='repass' name="repassword" type="password" maxlength="25" class="form-control" placeholder="At least 6 characters" length="40" required>
+				            	</div>				            	
+
+				            	<div class="form-group">
+					            	<label class="control-label" for="bank"><span class="glyphicon glyphicon-eye-open"> Bank</label>
+									 <select name="bank" required>
+									 	    <option style="display:none">
+									 	{% for bank in banks %}
+											<option class="form-control" value="{{bank.name}}">{{bank.name}}</option>
+									  	{% endfor %}
+									</select> 
+								</div>
+					            <div class="form-group">
+					            	<label class="control-label" for=""><span class="glyphicon glyphicon-eye-open">Govt. ID</label>
+								   <input type="file" name="govtId" class="form-control" required>
+				            	</div>
+					            <div class="form-group">
+					            	<label class="control-label" for="signupPassword"><span class="glyphicon glyphicon-eye-open"> GST RegNo:</label>
+					              	<input name="gstid" type="number" maxlength="25" class="form-control" required>
+				            	</div>
+				            	<input type="text" class="hidden" value='{{flag}}' name="category">
+								<hr>
+								<div class="form-group">
+				              		<button id='submitBtn' type="submit" class="ui pink button btn-block">Create your account</button>
+				            	</div>
+							</form>
+	        			</div>
+
+	      			</div> 
+	    		</div>
+	  		</div>
+		</div>
+
+{% endif %}
+
+{% if error == 1 %}
+
+<script type="text/javascript">
+	alert("Account already exists");
+</script>
+
+{% endif %}
+
+<script type="text/javascript">
+	$('#pass').on('input', function() {
+	    
+		p1 = $('#pass').val();
+		p2 = $('#repass').val();
+
+	    if(p1 == p2)
+	    {
+	    	$('#submitBtn').removeClass('disabled');
+	    }
+	    else
+	    {
+		    $('#submitBtn').addClass('disabled');	
+	    }
+	});
+
+	$('#repass').on('input', function() {
+	    
+		p1 = $('#pass').val();
+		p2 = $('#repass').val();
+
+	    if(p1 == p2)
+	    {
+	    	$('#submitBtn').removeClass('disabled');
+	    }
+	    else
+	    {
+		    $('#submitBtn').addClass('disabled');	
+	    }
+	});
+
+
+</script>
+
+{% endblock %}

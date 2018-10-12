@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="container">
+
+		<p>{{card.card_number}}</p>
+		<p>{{card.expiry_date}}</p>
+		<p>{{card.owner.username}}</p>
+
+	</div>
+
+	<form method="POST" enctype='multipart/form-data' action='/transactionFinal/' role='form'>
+		{% csrf_token %}
+        <div class="form-group">
+        	<label class="control-label" for="amount"><span class="glyphicon glyphicon-user"></span>  Merchant enter amount: </label>
+          	<input id="amount" step="0.01" name="amount" type="number" class="form-control" required>
+        </div>
+
+        <button onclick="showRest();" id='restBtn' type="button">Confirm</button>
+
+        <div id='remDet' class="hidden">
+	        <div class="form-group">
+	        	<label class="control-label" for="pin"><span class="glyphicon glyphicon-user"></span>  PIN: </label>
+	          	<input id="pin" name="pin" type="password" maxlength="4" class="form-control" required>
+	        </div>
+	        <input type="text" name="cardno" value="{{card.card_number}}" class="hidden">
+	        <input type="text" name="cardown" value="{{card.owner.username}}" class="hidden">
+
+	        <button class="ui large green button" type="submit">Submit</button>
+    	</div>
+	</form>
+
+
+<script type="text/javascript">
+	function showRest()
+	{
+		if($('#amount').val() != '')
+			$('#remDet').removeClass('hidden');
+	}
+</script>
+
+<script type="text/javascript">
+	
+	if({{flag}} == "failed")
+	{
+		alert("Card expired or blocked");
+       window.location.href = "/";
+	}
+	else if({{flag}} != 0)
+	{
+		alert("Incorrect PIN");
+		$('#amount').val('{{flag}}');
+		$('#remDet').removeClass('hidden');
+	}
+
+</script>
+
+{% endblock %}
