@@ -19,7 +19,7 @@ class UserProfile(models.Model):
 	account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return str(self.user.first_name)
+		return str(self.user.get_full_name())
 
 
 class Merchant(models.Model):
@@ -30,4 +30,4 @@ class Merchant(models.Model):
 	account = models.ForeignKey(Account, on_delete=models.CASCADE)
  
 	def __str__(self):
-		return str(self.id)
+		return str(self.user.get_full_name())

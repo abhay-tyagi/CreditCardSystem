@@ -41,11 +41,16 @@
 </script>
 
 <script type="text/javascript">
-	
-	if({{flag}} == "failed")
+
+	if('{{flag}}' == "failed")
 	{
 		alert("Card expired or blocked");
-       window.location.href = "/";
+		window.location.href = "/";
+	}
+	else if('{{flag}}' == "overflow")
+	{
+		alert("Exceeded credit card usage limit");
+		window.location.href = "/";
 	}
 	else if({{flag}} != 0)
 	{

@@ -29,7 +29,6 @@ def pendingFunds(request):
 
 		for tran in trans:
 			if tran.date == datetime.date.today():
-				print("eyahhhhhhhhhhhhhhh")
 				todays.append(tran)
 			else:
 				if tran.date in pends:
@@ -47,17 +46,29 @@ def payPending(request):
 		if request.method == 'POST':
 			dt = request.POST['date']
 			amt = request.POST['amt']
-
+ 
 			ft = FundTransfer()
 			ft.merchant = Merchant.objects.get(user=request.user)
 			ft.bank = ft.merchant.bank
 			ft.amount = amt
 			ft.save()
 
+			merc = ft.merchant.account
+			merc.usage += decimal.Decimal(amt)
+			merc.save()
+
 			trans = Transaction.objects.filter(date=dt)
 			for tran in trans:
 				tran.status = True
 				tran.save()
+
+			msg = "Hello " + request.user.get_full_name() + "\nYou have paid the Transfer Fee of Rs. " + str(amt) + " for " + str(dt) + ".\nYou will receive the funds for the transactions within 3 hours. "
+
+			try:
+				send_mail('Funds Transferred', msg, 'abyswp@gmail.com', [ft.merchant.user.email], fail_silently=False,)
+			except:
+				pass
+
 
 		trans = Transaction.objects.filter(merchant__user=request.user, status=False)
 
@@ -66,7 +77,6 @@ def payPending(request):
 
 		for tran in trans:
 			if tran.date == datetime.date.today():
-				print("eyahhhhhhhhhhhhhhh")
 				todays.append(tran)
 			else:
 				if tran.date in pends:
@@ -105,18 +115,21 @@ def transactionFinal(request):
 			cust = request.POST['cardown']
 
 			card = CreditCard.objects.get(card_number=cardno)
+			account = UserProfile.objects.get(credit_card_number__card_number=cardno)
+			account = account.account
 
 			if str(card.pin) != str(pin):
 				return render(request, 'Website/intermediary.html', {'card': card, 'flag': amt})
 			elif card.blocked == True or card.expiry_date < datetime.date.today():
 				return render(request, 'Website/intermediary.html', {'card': card, 'flag': 'failed'}) 
-
+			elif account.usage + decimal.Decimal(float(amt)) > account.max_limit:
+				return render(request, 'Website/intermediary.html', {'card': card, 'flag': 'overflow'})
+ 
 			trans = Transaction()
 			trans.amount = amt
 			trans.credit_card = card
 			trans.merchant = Merchant.objects.get(user=request.user)
 			trans.customer = UserProfile.objects.get(user__username=cust)
-
 
 			acc = trans.customer.account
 			acc.usage += decimal.Decimal(float(trans.amount))
@@ -126,7 +139,10 @@ def transactionFinal(request):
 
 			msg = "Amount debited for a purchase of " + str(amt) + " from " + trans.merchant.user.get_full_name()
 
-			send_mail('Purchase made', msg, 'abyswp@gmail.com', [trans.customer.user.email], fail_silently=False,)
+			try:
+				send_mail('Purchase made', msg, 'abyswp@gmail.com', [trans.customer.user.email], fail_silently=False,)
+			except:
+				pass
 
 			return render(request, 'Website/transactionFinal.html', {'trans': trans})
 	else:

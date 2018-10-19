@@ -25,7 +25,7 @@ def signin(request, arg=''):
 
 		user = authenticate(username = user_name, password = password)
 
-		if user == None :
+		if user == None:
 			return render(request, 'authentication/signin.html', {'error' : 'User-Name/Password Invalid', 'flag': category, 'banks': Bank.objects.all()})
 		elif user.is_active == False :
 			return render(request, 'authentication/login.djt', {'error' : 'User is not active contact admin.', 'flag': category, 'banks': Bank.objects.all()})
