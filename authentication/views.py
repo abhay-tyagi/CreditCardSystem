@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.models import User
 from .models import *
-
+import random
+from django.core.mail import send_mail
 from django.conf import settings
 
 # Create your views here.
@@ -17,7 +18,7 @@ def signin(request, arg=''):
 			return render(request, 'authentication/signin.html', {'flag': 1})
 		else:
 			return render(request, 'authentication/signin.html', {'flag': arg, 'banks': Bank.objects.all()})
-
+ 
 	elif request.method == 'POST':
 		user_name = request.POST.get('username')
 		password = request.POST.get('password')
@@ -26,9 +27,10 @@ def signin(request, arg=''):
 		user = authenticate(username = user_name, password = password)
 
 		if user == None:
+			print("heyyyyyyyy")
 			return render(request, 'authentication/signin.html', {'error' : 'User-Name/Password Invalid', 'flag': category, 'banks': Bank.objects.all()})
-		elif user.is_active == False :
-			return render(request, 'authentication/login.djt', {'error' : 'User is not active contact admin.', 'flag': category, 'banks': Bank.objects.all()})
+		elif user.is_active == False:
+			return render(request, 'authentication/signin.html', {'error' : 'Account not activated.', 'flag': category, 'banks': Bank.objects.all()})
 
 		login(request, user)
 		return redirect('/')
@@ -38,18 +40,28 @@ def signin(request, arg=''):
 
 def signup(request):
 	if request.method == 'POST':
-
 		category = request.POST['category']
+
+		usr = User()
+		code = category + str(random.randint(1, 99999999))
+		successful = 0
 
 		if category == 'merchant':
 			fullname = request.POST['fullname']
 			email = request.POST['email']
 			password = request.POST['password']
 			repassword = request.POST['repassword']
+			bankaccno = request.POST['bankaccno']
 
 			if User.objects.filter(username=email).exists():
 				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 1})
 
+			ac = Account.objects.filter(account_number=bankaccno)
+
+			if ac.count() == 0:
+				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
+			elif Merchant.objects.filter(account=ac).exists() or UserProfile.objects.filter(account=ac).exists():
+				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
 
 			bankName = request.POST['bank']
 			govtID = request.FILES['govtId']
@@ -57,7 +69,7 @@ def signup(request):
 
 			fullname = fullname.split(' ')
 
-			usr = User()
+			usr.is_active = False
 			usr.username = email
 			usr.first_name = fullname[0]
 			if len(fullname) > 1:
@@ -66,22 +78,103 @@ def signup(request):
 			usr.set_password(password)
 			usr.save()
 
-			acc = Account()
-			acc.save()
-
 			mc = Merchant()
 			mc.user = usr
 			mc.bank = Bank.objects.get(name=bankName)
 			mc.govt_id = govtID
 			mc.gst_id = gstID
-			mc.account = acc
-			mc.save()
+			mc.account = ac[0]
+			mc.activation_code = code
+			mc.save() 
 
-			user = authenticate(username = mc.user.username, password = password)
+			successful = 1
 
-		return render(request, 'Website/index.html', {})
+		elif category == 'customer':
+			fullname = request.POST['fullname']
+			email = request.POST['email']
+			password = request.POST['password']
+			repassword = request.POST['repassword']
+
+			if User.objects.filter(username=email).exists():
+				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 1})
+
+			bankName = request.POST['bank']
+			bankaccno = request.POST['bankaccno']
+			panno = request.POST['panno']
+			credno = request.POST['credno']
+
+			ac = Account.objects.filter(account_number=bankaccno)
+
+			if ac.count() == 0:
+				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
+			elif Merchant.objects.filter(account=ac).exists() or UserProfile.objects.filter(account=ac).exists():
+				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})
+
+			cred = CreditCard.objects.filter(card_number=credno)
+
+			if cred.count() == 0:
+				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})
+
+			fullname = fullname.split(' ')
+
+			usr.is_active = False
+			usr.username = email
+			usr.first_name = fullname[0]
+			if len(fullname) > 1:
+				usr.last_name = fullname[1]
+			usr.email = email
+			usr.set_password(password)
+			usr.save()
+
+			cs = UserProfile()
+			cs.user = usr
+			cs.bank = Bank.objects.get(name=bankName)
+			cs.account = Account.objects.get(account_number=bankaccno)
+			cs.panno = panno
+			cs.account = ac[0]
+			cs.credit_card_number = cred[0]
+			cs.activation_code = code
+			cs.save()
+
+			userCard = cred[0]
+			userCard.owner = usr
+			userCard.bank = cs.bank
+			userCard.save()
+
+			successful = 1
+		
+
+		if successful == 1:
+			msg = "Visit\n " + str(request.META['HTTP_HOST']) + "/authentication/activate/" + code + "/ \nto activate."
+
+			try:
+				send_mail('Activate your account', msg, 'cred-site@no-reply.com', [usr.email], fail_silently=False,)
+			except:
+				pass
+
+			return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': '/signin/' + category})
+		else:
+			return render(request, 'Website/index.html', {})
 	else:
 		return render(request, 'authentication/signin.html', {'flag': 1})
+
+
+def activateUser(request, arg):
+	subject = None
+	category  = None
+
+	if arg[0] == 'm':
+		subject = Merchant.objects.get(activation_code=arg)
+		category = 'merchant'
+	else:
+		subject = UserProfile.objects.get(activation_code=arg)
+		category = 'customer'
+
+	user = User.objects.get(username=subject.user.username)
+	user.is_active = True
+	user.save()
+
+	return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': category})
 
 
 def signout(request):

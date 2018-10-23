@@ -95,13 +95,18 @@ def scanCard(request):
 		try:
 			cardNumber = Read_qr.funct()
 		except:
-			return redirect('/')
+			return render(request, 'Website/index.html', {'flag': 'cancelled'})
 
 		try:
 			card = CreditCard.objects.get(card_number=cardNumber)
+			cust = UserProfile.objects.get(credit_card_number=card)
+
 			return render(request, 'Website/intermediary.html', {'card': card, 'flag': 0})
 		except CreditCard.DoesNotExist:
-			return render(request, 'Website/index.html', {})
+			return render(request, 'Website/index.html', {'flag': 'Credit Card Invalid'})
+		except UserProfile.DoesNotExist:
+			return render(request, 'Website/index.html', {'flag': 'Credit Card Invalid'})
+
 	else:
 		return render(request, 'authentication/signin.html', {'flag': 1})
 
@@ -129,7 +134,14 @@ def transactionFinal(request):
 			trans.amount = amt
 			trans.credit_card = card
 			trans.merchant = Merchant.objects.get(user=request.user)
-			trans.customer = UserProfile.objects.get(user__username=cust)
+
+			print(cust)
+
+			try:
+				trans.customer = UserProfile.objects.get(user__username=cust)
+			except:
+				print("No such customer")
+				return render(request, 'Website/intermediary.html', {'card': card, 'flag': amt})
 
 			acc = trans.customer.account
 			acc.usage += decimal.Decimal(float(trans.amount))

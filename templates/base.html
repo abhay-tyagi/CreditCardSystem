@@ -2,21 +2,20 @@
 <html>
 
 <head>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+	<link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'bootstrap/bootstrap-theme.min.css' %}">
+	<link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>	
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+	<script src="{% static 'semantic/semantic.min.js' %}"></script>
 </head>
 
-<body>
-		<div class='ui blue large inverted menu'>
+<body> 
+		<div class='ui black large inverted menu'>
 {% if user.is_authenticated %}
 
+			<span class='item' href="/">{{ user.get_full_name }}</span>
 			<a class='item' href="/"><i class="home icon"></i>Home</a>
 			<a class='item' href="/pendingFunds/"><i class="rupee sign icon"></i>Funds</a>
 			<a class='item' href="/pendingFunds/"><i class="history icon"></i>History</a>
@@ -31,6 +30,10 @@
 			            </div>
 			          </div>
 			    </div>
+
+{% else %}
+
+	<a class='item' href="/"><i class="home icon"></i>Home</a>
 
 {% endif %}
 		</div>

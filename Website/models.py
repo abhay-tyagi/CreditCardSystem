@@ -9,6 +9,7 @@ import datetime
 # Create your models here.
 
 class Account(models.Model):
+	account_number = models.IntegerField()
 	usage = models.DecimalField(decimal_places=2, max_digits=10, default = 0)
 	max_limit = models.DecimalField(decimal_places=2, max_digits=10, default=100000)
 
@@ -31,8 +32,8 @@ class CreditCard(models.Model):
 	cvv = models.IntegerField()
 	expiry_date = models.DateField()
 	blocked = models.BooleanField()
-	owner = models.ForeignKey(User, on_delete=models.CASCADE)
-	bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
+	owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+	bank = models.ForeignKey(Bank, on_delete=models.CASCADE, null=True, blank=True)
 	pin = models.IntegerField(null=True)
 
 	def __str__(self):

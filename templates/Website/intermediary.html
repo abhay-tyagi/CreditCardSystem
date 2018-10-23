@@ -13,7 +13,7 @@
 	<form method="POST" enctype='multipart/form-data' action='/transactionFinal/' role='form'>
 		{% csrf_token %}
         <div class="form-group">
-        	<label class="control-label" for="amount"><span class="glyphicon glyphicon-user"></span>  Merchant enter amount: </label>
+        	<label class="control-label" for="amount">Merchant enter amount: </label>
           	<input id="amount" step="0.01" name="amount" type="number" class="form-control" required>
         </div>
 
@@ -21,7 +21,7 @@
 
         <div id='remDet' class="hidden">
 	        <div class="form-group">
-	        	<label class="control-label" for="pin"><span class="glyphicon glyphicon-user"></span>  PIN: </label>
+	        	<label class="control-label" for="pin">PIN: </label>
 	          	<input id="pin" name="pin" type="password" maxlength="4" class="form-control" required>
 	        </div>
 	        <input type="text" name="cardno" value="{{card.card_number}}" class="hidden">

@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^signin/(?P<arg>[\w\-]+)/$', views.signin, name='signin'),
 	url(r'^signup/$', views.signup, name='signup'),
 	url(r'^signout/$', views.signout, name='signout'),
+	url(r'^activate/(?P<arg>[\w\-]+)/$', views.activateUser, name='activateUser'),
 ]

@@ -2,11 +2,26 @@
 
 {% block content %}
 
-	<div class="container">
-
-		<p>Hi, {{user.get_full_name}}</p>
- 
-		<a href="/scanCard/" class="ui red button">Begin Transaction</a>
+	<div class="ui center aligned container">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h2>Scan A Credit Card</h2>
+			</div>
+			<div class="panel-body">
+				<a href="/scanCard/" class="ui red button">Begin Transaction</a>
+			</div>
+		</div> 
 	</div>
+
+<script type="text/javascript">
+	if('{{flag}}' == 'cancelled') 
+	{
+		alert('Transaction cancelled');
+	}
+	else if('{{flag}}' == 'Credit Card Invalid')
+	{
+		alert('{{flag}}')
+	}
+</script>
 
 {% endblock %}

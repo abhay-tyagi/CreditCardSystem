@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
 {% if flag == 1 %}
 	<div class="container">
+			<div class="ui center aligned segment">
+				<h2>Welcome</h2>
+		</div>
 		<div class="row">
-			<div class="col-sm-6">
-					<a href="/authentication/signin/customer" class="ui large black button" id='customerBtn'>Customer</a>
-			</div>
-			<div class="col-sm-6">
-					<a href="/authentication/signin/merchant" class="ui large black button" id='merchantBtn'>Merchant</a>
+			<div class="col-sm-5">
+				<div class="ui black center aligned segment">
+					<a href="/authentication/signin/customer" class="" id='customerBtn'>
+						<img class="ui image" src="{% static 'images/cust.png' %}">
+						<h3>Customer</h3>
+					</a>
+				</div>
+			</div>			
+			<div class="col-sm-5 col-sm-offset-2">
+				<div class="ui black center aligned segment">
+					<a href="/authentication/signin/merchant" class="" id='merchantBtn'>
+						<img class="ui image" src="{% static 'images/merc.png' %}">
+						<h3>Merchant</h3>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -17,30 +31,34 @@
 {% else %}
 	
 		<div class="container">
-            <form class="form-horizontal" method="POST">
-              {% csrf_token %}
-              {{error}}
-                <span id="reauth-email" class="reauth-email"></span>
-                <div class='form-group'>
-                    <label class="control-label col-sm-2" for="inputEmail">Email: </label>
-                    <div class='col-sm-10'>
-                        <input autocomplete="off" name='username' type="email" id="inputEmail" class="form-control" placeholder="Enter Username" required autofocus>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label class="control-label col-sm-2" for="inputPassword">Password: </label>
-                    <div class='col-sm-10'>
-                        <input autocomplete="off" name='password' type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
-                    </div>
-                </div>
+			<div class="ui center aligned segment"> 
+	            <form class="form-horizontal" method="POST">
+	              {% csrf_token %}
 
-                <input value="{{flag}}" name='category' class="hidden">
+	              <h2>Login To Continue</h2>
 
-                <button class="ui large teal button" type="submit">Sign in</button>
-            </form>
+	              <h5>{{error}}</h5>
+	                <span id="reauth-email" class="reauth-email"></span>
+	                <div class='form-group'>
+	                    <label class="control-label col-sm-2" for="inputEmail">Email: </label>
+	                    <div class='col-sm-10'>
+	                        <input autocomplete="off" name='username' type="email" id="inputEmail" class="form-control" placeholder="Enter Email" required autofocus>
+	                    </div>
+	                </div>
+	                <div class='form-group'>
+	                    <label class="control-label col-sm-2" for="inputPassword">Password: </label>
+	                    <div class='col-sm-10'>
+	                        <input autocomplete="off" name='password' type="password" id="inputPassword" class="form-control" placeholder="Enter Password" required>
+	                    </div>
+	                </div>
+
+	                <input value="{{flag}}" name='category' class="hidden">
+
+	                <button id="loginBut" class="ui large teal button" type="submit">Sign in</button>
+					<button type='button' class='ui large green button' data-toggle="modal" data-target="#regModal{{flag}}">or Signup</button>
+	            </form>
+	        </div>
         </div>
-
-		<button type='button' class='' data-toggle="modal" data-target="#regModal{{flag}}">or Signup</button>
 
 		<div class="container">
 	  		<div class="modal fade" id="regModalmerchant" role="dialog">
@@ -55,44 +73,55 @@
 							<form method="post" action="/authentication/signup/" role="form" id="user_form" enctype='multipart/form-data'>
 							{% csrf_token %}
 						        <div class="form-group">
-						        	<label class="control-label" for="signupName"><span class="glyphicon glyphicon-user"></span>  Full Name</label>
+						        	<label class="control-label" for="signupName"><i class="info icon"></i>Full Name</label>
 					              	<input id="name" name="fullname" type="text" maxlength="50" class="form-control" required>
 					            </div>
 
 					            <div class="form-group">
-					            	<label class="control-label" for="signupEmail"><span class='glyphicon glyphicon-envelope'></span> Email</label>
+					            	<label class="control-label" for="signupEmail"><i class="envelope icon"></i>Email</label>
 					              	<input name="email" type="email" maxlength="50" class="form-control" required>
 					            </div>
-					            <div class="form-group">
-					            	<label class="control-label" for="signupPassword"><span class="glyphicon glyphicon-eye-open"> Password</label>
-					              	<input id='pass' name="password" type="password" maxlength="25" class="form-control" placeholder="At least 6 characters" length="40" required>
-				            	</div>
-					            <div class="form-group">
-					            	<label class="control-label" for="signupPassword"><span class="glyphicon glyphicon-eye-open"> Re-enter Password</label>
-					              	<input id='repass' name="repassword" type="password" maxlength="25" class="form-control" placeholder="At least 6 characters" length="40" required>
-				            	</div>				            	
-
+					            <div class="row">
+						            <div class="col-sm-6">
+						            	<label class="control-label" for="signupPassword"><i class="user secret icon"></i>Password</label>
+						              	<input id='pass' name="password" type="password" maxlength="25" class="form-control" placeholder="At least 6 characters" length="40" required>
+					            	</div>
+						            <div class="col-sm-6">
+						            	<label class="control-label" for="signupPassword"><i class="user secret icon"></i>Re-enter Password</label>
+						              	<input id='repass' name="repassword" type="password" maxlength="25" class="form-control" placeholder="Must match password" length="40" required>
+					            	</div>
+					            </div>
+					            <br>
 				            	<div class="form-group">
-					            	<label class="control-label" for="bank"><span class="glyphicon glyphicon-eye-open"> Bank</label>
+					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
 									 <select name="bank" required>
 									 	    <option style="display:none">
 									 	{% for bank in banks %}
-											<option class="form-control" value="{{bank.name}}">{{bank.name}}</option>
+											<option class="" value="{{bank.name}}">{{bank.name}}</option>
 									  	{% endfor %}
 									</select> 
 								</div>
 					            <div class="form-group">
-					            	<label class="control-label" for=""><span class="glyphicon glyphicon-eye-open">Govt. ID</label>
-								   <input type="file" name="govtId" class="form-control" required>
+					            	<label class="control-label" for=""><i class="id card icon"></i>Govt. ID</label>
+								   <input type="file" name="govtId" class="" required>
 				            	</div>
-					            <div class="form-group">
-					            	<label class="control-label" for="signupPassword"><span class="glyphicon glyphicon-eye-open"> GST RegNo:</label>
-					              	<input name="gstid" type="number" maxlength="25" class="form-control" required>
+					            <div class="row">
+					            	<div class="col-sm-6">
+						            	<label class="control-label" for="signupPassword"><i class="money bill outline icon"></i> GST RegNo:</label>
+						              	<input name="gstid" type="number" maxlength="25" class="form-control" required>
+						              </div>
+					            	<div class="col-sm-6">
+						            	<label class="control-label" for="bankAccount"><i class="money bill outline icon"></i> Bank Account Number:</label>
+						              	<input name="bankaccno" type="number" maxlength="25" class="form-control" required>
+									</div>
 				            	</div>
 				            	<input type="text" class="hidden" value='{{flag}}' name="category">
 								<hr>
 								<div class="form-group">
-				              		<button id='submitBtn' type="submit" class="ui pink button btn-block">Create your account</button>
+				              		<button id='submitBtn' type="submit" class="ui black right labeled icon button btn-block">
+										<i class="right arrow icon"></i>
+				              			Create your account
+				              		</button>
 				            	</div>
 							</form>
 	        			</div>
@@ -102,12 +131,104 @@
 	  		</div>
 		</div>
 
+		<div class="container">
+	  		<div class="modal fade" id="regModalcustomer" role="dialog">
+	    		<div class="modal-dialog">
+	      			<div class="modal-content">
+	        			<div class="modal-header">
+	          				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	          				<h4 class="modal-title">Sign Up</h4>
+	        			</div>
+
+	        			<div class="modal-body">
+							<form method="post" action="/authentication/signup/" role="form" id="user_form" enctype='multipart/form-data'>
+							{% csrf_token %}
+						        <div class="form-group">
+						        	<label class="control-label" for="signupName"><i class="info icon"></i>Full Name</label>
+					              	<input id="name" name="fullname" type="text" maxlength="50" class="form-control" required>
+					            </div>
+
+					            <div class="form-group">
+					            	<label class="control-label" for="signupEmail"><i class="envelope icon"></i>Email</label>
+					              	<input name="email" type="email" maxlength="50" class="form-control" required>
+					            </div>
+					            <div class="row">
+						            <div class="col-sm-6">
+						            	<label class="control-label" for="signupPassword"><i class="user secret icon"></i>Password</label>
+						              	<input id='pass1' name="password" type="password" maxlength="25" class="form-control" placeholder="At least 6 characters" length="40" required>
+					            	</div>
+						            <div class="col-sm-6">
+						            	<label class="control-label" for="signupPassword"><i class="user secret icon"></i>Re-enter Password</label>
+						              	<input id='repass1' name="repassword" type="password" maxlength="25" class="form-control" placeholder="Must match password" length="40" required>
+					            	</div>
+					            </div>
+					            <br>
+				            	<div class="form-group">
+					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
+									 <select name="bank" required>
+									 	    <option style="display:none">
+									 	{% for bank in banks %}
+											<option class="" value="{{bank.name}}">{{bank.name}}</option>
+									  	{% endfor %}
+									</select> 
+								</div>
+					            <div class="form-group">
+					            	<label class="control-label" for="signupPassword"><i class="id card icon"></i> PAN:</label>
+					              	<input name="panno" type="text" maxlength="25" class="form-control" required>
+				            	</div>
+					            <div class="row">
+					            	<div class="col-sm-6">
+						            	<label class="control-label" for="bankAccount"><i class="money bill outline icon"></i> Bank Account Number:</label>
+						              	<input name="bankaccno" type="number" maxlength="25" class="form-control" required>
+									</div>
+					            	<div class="col-sm-6">
+						            	<label class="control-label" for="credno"><i class="credit card icon"></i> Credit Card Number:</label>
+						              	<input name="credno" type="number" maxlength="25" class="form-control" required>
+									</div>
+				            	</div>
+				            	<input type="text" class="hidden" value='{{flag}}' name="category">
+								<hr>
+								<div class="form-group">
+				              		<button id='submitBtn1' type="submit" class="ui black right labeled icon button btn-block">
+										<i class="right arrow icon"></i>
+				              			Create your account
+				              		</button>
+				            	</div>
+							</form>
+	        			</div>
+
+	      			</div> 
+	    		</div>
+	  		</div>
+		</div>
+
+
 {% endif %}
 
 {% if error == 1 %}
 
 <script type="text/javascript">
 	alert("Account already exists");
+</script>
+
+{% elif error == 2 %}
+
+<script type="text/javascript">
+	alert("Invalid Account Number");
+</script>
+
+{% elif error == "merchant" or error == "customer" %}
+
+<script type="text/javascript">
+	alert("Activation Successful");
+	window.location.href = "/authentication/signin/" + "{{error}}/";
+</script>
+
+{% elif error == "/signin/merchant" or error == "/signin/customer" %}
+
+<script type="text/javascript">
+	alert("Account Created. Check email for activation link");
+	window.location.href = "/authentication" + "{{error}}/";
 </script>
 
 {% endif %}
@@ -140,6 +261,38 @@
 	    else
 	    {
 		    $('#submitBtn').addClass('disabled');	
+	    }
+	});
+</script>
+
+<script type="text/javascript">
+	$('#pass1').on('input', function() {
+	    
+		p1 = $('#pass1').val();
+		p2 = $('#repass1').val();
+
+	    if(p1 == p2)
+	    {
+	    	$('#submitBtn1').removeClass('disabled');
+	    }
+	    else
+	    {
+		    $('#submitBtn1').addClass('disabled');	
+	    }
+	});
+
+	$('#repass1').on('input', function() {
+	    
+		p1 = $('#pass1').val();
+		p2 = $('#repass1').val();
+
+	    if(p1 == p2)
+	    {
+	    	$('#submitBtn1').removeClass('disabled');
+	    }
+	    else
+	    {
+		    $('#submitBtn1').addClass('disabled');	
 	    }
 	});
 
