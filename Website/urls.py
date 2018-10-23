@@ -10,4 +10,6 @@ urlpatterns = [
 	url(r'^transactionFinal/$', views.transactionFinal, name = 'transactionFinal'),
 	url(r'^pendingFunds/$', views.pendingFunds, name = 'pendingFunds'),
 	url(r'^payPending/$', views.payPending, name = 'payPending'),
+	url(r'^transactionHistory/$', views.transactionHistory, name = 'transactionHistory'),
+	url(r'^accountInformation/$', views.accountInformation, name = 'accountInformation'),
 ]

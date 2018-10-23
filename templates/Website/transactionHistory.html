@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load app_filters %}
+
+{% block content %}
+
+{% if flag == 2 %}
+
+	{% for tran in allTrans %}
+		<p>
+			Bought from {{tran.merchant}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}} using {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}
+		</p>
+	{% endfor %}
+
+{% elif flag == 1 %}
+
+	{% for tran in allTrans %}
+		<p>
+			Sold to {{tran.customer}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}}. Customer used {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}.
+
+			{% if tran.status == True %}
+				-> Paid
+			{% else %}
+				-> Pending
+			{% endif %}
+		</p>
+	{% endfor %}
+
+{% endif %}
+
+{% endblock %}

@@ -1,41 +1,50 @@
 {% load staticfiles %}
+{% load app_filters %}
+
 <html>
+	<head>
+		<link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'bootstrap/bootstrap-theme.min.css' %}">
+		<link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
 
-<head>
-	<link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'bootstrap/bootstrap-theme.min.css' %}">
-	<link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
-	<script src="{% static 'semantic/semantic.min.js' %}"></script>
-</head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+		<script src="{% static 'semantic/semantic.min.js' %}"></script>
+	</head>
 
 <body> 
 		<div class='ui black large inverted menu'>
-{% if user.is_authenticated %}
+		{% if user.is_authenticated %}
 
 			<span class='item' href="/">{{ user.get_full_name }}</span>
 			<a class='item' href="/"><i class="home icon"></i>Home</a>
-			<a class='item' href="/pendingFunds/"><i class="rupee sign icon"></i>Funds</a>
-			<a class='item' href="/pendingFunds/"><i class="history icon"></i>History</a>
+			<a class='item' href="/transactionHistory/"><i class="history icon"></i>Transaction History</a>
 
-				<div class='right menu'>
-					<div class="ui simple dropdown item">
-			            Account <i class="icon dropdown"></i>
-			            <div class="menu">
-			              <a class="item" href=''><i class="eye icon"></i> Change password</a>
-			              <a class="item" href=''><i class="edit icon"></i> Edit profile</a>
-			              <a class="item" href='/authentication/signout/'><i class="sign out icon"></i> Sign out</a>
-			            </div>
-			          </div>
-			    </div>
+			{% if request.user|has_group:"Merchant" %}
+				<a class='item' href="/pendingFunds/"><i class="rupee sign icon"></i>Funds</a>
+			{% elif request.user|has_group:"Customer" %}
+				<a class='item' href="/accountInformation/"><i class="rupee sign icon"></i>Account Information</a>
+			{% endif %}
 
-{% else %}
+			<div class='right menu'>
+				<div class="ui simple dropdown item">
+					Account <i class="icon dropdown"></i>
+					<div class="menu">
+					  <a class="item" href='/authentication/changePassword'>
+						<i class="eye icon"></i> 
+						Change password
+					  </a>
+					  <a class="item" href=''><i class="edit icon"></i> Edit profile</a>
+					  <a class="item" href='/authentication/signout/'><i class="sign out icon"></i> Sign out</a>
+					</div>
+				  </div>
+			</div>
 
-	<a class='item' href="/"><i class="home icon"></i>Home</a>
+		{% else %}
 
-{% endif %}
+			<a class='item' href="/"><i class="home icon"></i>Home</a>
+
+		{% endif %}
 		</div>
 
 	{% block content %}

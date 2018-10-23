@@ -60,13 +60,13 @@
 	        </div>
         </div>
 
-		<div class="container">
+		<div class="ui container">
 	  		<div class="modal fade" id="regModalmerchant" role="dialog">
 	    		<div class="modal-dialog">
 	      			<div class="modal-content">
 	        			<div class="modal-header">
 	          				<button type="button" class="close" data-dismiss="modal">&times;</button>
-	          				<h4 class="modal-title">Sign Up</h4>
+	          				<h4 class="modal-title" style="text-align: center;">Sign Up</h4>
 	        			</div>
 
 	        			<div class="modal-body">
@@ -81,6 +81,20 @@
 					            	<label class="control-label" for="signupEmail"><i class="envelope icon"></i>Email</label>
 					              	<input name="email" type="email" maxlength="50" class="form-control" required>
 					            </div>
+
+				            	<div class="form-group">
+					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
+									 <select class="form-control" name="bank" required>
+									 	    <option style="display:none">
+									 	{% for bank in banks %}
+											<option class="" value="{{bank.name}}">{{bank.name}}</option>
+									  	{% endfor %}
+									</select> 
+								</div>
+					            <div class="form-group">
+					            	<label class="control-label" for=""><i class="id card icon"></i>Govt. ID</label>
+								   <input type="file" name="govtId" class="" required>
+				            	</div>
 					            <div class="row">
 						            <div class="col-sm-6">
 						            	<label class="control-label" for="signupPassword"><i class="user secret icon"></i>Password</label>
@@ -92,19 +106,6 @@
 					            	</div>
 					            </div>
 					            <br>
-				            	<div class="form-group">
-					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
-									 <select name="bank" required>
-									 	    <option style="display:none">
-									 	{% for bank in banks %}
-											<option class="" value="{{bank.name}}">{{bank.name}}</option>
-									  	{% endfor %}
-									</select> 
-								</div>
-					            <div class="form-group">
-					            	<label class="control-label" for=""><i class="id card icon"></i>Govt. ID</label>
-								   <input type="file" name="govtId" class="" required>
-				            	</div>
 					            <div class="row">
 					            	<div class="col-sm-6">
 						            	<label class="control-label" for="signupPassword"><i class="money bill outline icon"></i> GST RegNo:</label>
@@ -137,7 +138,7 @@
 	      			<div class="modal-content">
 	        			<div class="modal-header">
 	          				<button type="button" class="close" data-dismiss="modal">&times;</button>
-	          				<h4 class="modal-title">Sign Up</h4>
+	          				<h4 class="modal-title" style="text-align: center;">Sign Up</h4>
 	        			</div>
 
 	        			<div class="modal-body">
@@ -152,6 +153,20 @@
 					            	<label class="control-label" for="signupEmail"><i class="envelope icon"></i>Email</label>
 					              	<input name="email" type="email" maxlength="50" class="form-control" required>
 					            </div>
+
+				            	<div class="form-group">
+					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
+									 <select class="form-control" name="bank" required>
+									 	    <option style="display:none">
+									 	{% for bank in banks %}
+											<option class="" value="{{bank.name}}">{{bank.name}}</option>
+									  	{% endfor %}
+									</select> 
+								</div>
+					            <div class="form-group">
+					            	<label class="control-label" for="signupPassword"><i class="id card icon"></i> PAN:</label>
+					              	<input name="panno" type="text" maxlength="25" class="form-control" required>
+				            	</div>
 					            <div class="row">
 						            <div class="col-sm-6">
 						            	<label class="control-label" for="signupPassword"><i class="user secret icon"></i>Password</label>
@@ -163,19 +178,6 @@
 					            	</div>
 					            </div>
 					            <br>
-				            	<div class="form-group">
-					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
-									 <select name="bank" required>
-									 	    <option style="display:none">
-									 	{% for bank in banks %}
-											<option class="" value="{{bank.name}}">{{bank.name}}</option>
-									  	{% endfor %}
-									</select> 
-								</div>
-					            <div class="form-group">
-					            	<label class="control-label" for="signupPassword"><i class="id card icon"></i> PAN:</label>
-					              	<input name="panno" type="text" maxlength="25" class="form-control" required>
-				            	</div>
 					            <div class="row">
 					            	<div class="col-sm-6">
 						            	<label class="control-label" for="bankAccount"><i class="money bill outline icon"></i> Bank Account Number:</label>

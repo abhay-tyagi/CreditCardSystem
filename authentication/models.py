@@ -5,7 +5,7 @@ from django.db import models
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from Website.models import * 
-
+ 
 # Create your models here.
 
 private_storage = FileSystemStorage(location=settings.PRIVATE_STORAGE_ROOT)

@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.models import User
 from .models import *
@@ -27,7 +29,6 @@ def signin(request, arg=''):
 		user = authenticate(username = user_name, password = password)
 
 		if user == None:
-			print("heyyyyyyyy")
 			return render(request, 'authentication/signin.html', {'error' : 'User-Name/Password Invalid', 'flag': category, 'banks': Bank.objects.all()})
 		elif user.is_active == False:
 			return render(request, 'authentication/signin.html', {'error' : 'Account not activated.', 'flag': category, 'banks': Bank.objects.all()})
@@ -42,41 +43,42 @@ def signup(request):
 	if request.method == 'POST':
 		category = request.POST['category']
 
-		usr = User()
 		code = category + str(random.randint(1, 99999999))
 		successful = 0
 
+		fullname = (request.POST['fullname']).split(' ')
+		email = request.POST['email']
+		password = request.POST['password']
+		repassword = request.POST['repassword']
+		bankName = request.POST['bank']
+		bankaccno = request.POST['bankaccno']
+		
+		if User.objects.filter(username=email).exists():
+			return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 1})
+
+		ac = Account.objects.filter(account_number=bankaccno)
+
+		if ac.count() == 0:
+			return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
+		elif Merchant.objects.filter(account=ac).exists() or UserProfile.objects.filter(account=ac).exists():
+			return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
+
+		usr = User()
+		usr.is_active = False
+		usr.username = email
+		usr.first_name = fullname[0]
+		if len(fullname) > 1:
+			usr.last_name = fullname[1]
+		usr.email = email
+		usr.set_password(password)
+		usr.save()
+
+		grp = Group.objects.get(name=category.capitalize()) 
+		grp.user_set.add(usr)
+
 		if category == 'merchant':
-			fullname = request.POST['fullname']
-			email = request.POST['email']
-			password = request.POST['password']
-			repassword = request.POST['repassword']
-			bankaccno = request.POST['bankaccno']
-
-			if User.objects.filter(username=email).exists():
-				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 1})
-
-			ac = Account.objects.filter(account_number=bankaccno)
-
-			if ac.count() == 0:
-				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
-			elif Merchant.objects.filter(account=ac).exists() or UserProfile.objects.filter(account=ac).exists():
-				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
-
-			bankName = request.POST['bank']
 			govtID = request.FILES['govtId']
 			gstID = request.POST['gstid']
-
-			fullname = fullname.split(' ')
-
-			usr.is_active = False
-			usr.username = email
-			usr.first_name = fullname[0]
-			if len(fullname) > 1:
-				usr.last_name = fullname[1]
-			usr.email = email
-			usr.set_password(password)
-			usr.save()
 
 			mc = Merchant()
 			mc.user = usr
@@ -90,41 +92,13 @@ def signup(request):
 			successful = 1
 
 		elif category == 'customer':
-			fullname = request.POST['fullname']
-			email = request.POST['email']
-			password = request.POST['password']
-			repassword = request.POST['repassword']
-
-			if User.objects.filter(username=email).exists():
-				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 1})
-
-			bankName = request.POST['bank']
-			bankaccno = request.POST['bankaccno']
 			panno = request.POST['panno']
 			credno = request.POST['credno']
-
-			ac = Account.objects.filter(account_number=bankaccno)
-
-			if ac.count() == 0:
-				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})					
-			elif Merchant.objects.filter(account=ac).exists() or UserProfile.objects.filter(account=ac).exists():
-				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})
 
 			cred = CreditCard.objects.filter(card_number=credno)
 
 			if cred.count() == 0:
 				return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': 2})
-
-			fullname = fullname.split(' ')
-
-			usr.is_active = False
-			usr.username = email
-			usr.first_name = fullname[0]
-			if len(fullname) > 1:
-				usr.last_name = fullname[1]
-			usr.email = email
-			usr.set_password(password)
-			usr.save()
 
 			cs = UserProfile()
 			cs.user = usr
@@ -142,15 +116,14 @@ def signup(request):
 			userCard.save()
 
 			successful = 1
-		
 
 		if successful == 1:
 			msg = "Visit\n " + str(request.META['HTTP_HOST']) + "/authentication/activate/" + code + "/ \nto activate."
 
 			try:
-				send_mail('Activate your account', msg, 'cred-site@no-reply.com', [usr.email], fail_silently=False,)
+				send_mail('Activate your account', msg, 'abyswp@gmail.com', [usr.email], fail_silently=False,)
 			except:
-				pass
+				print("COULD NOT SEND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
 			return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': '/signin/' + category})
 		else:
@@ -177,6 +150,26 @@ def activateUser(request, arg):
 	return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': category})
 
 
+@login_required
+def changePassword(request):
+	if request.method == 'GET':
+		return render(request, 'authentication/changePassword.html', {})
+	else:
+		oldpassword = request.POST['oldpassword']
+		newpassword = request.POST['newpassword']
+		renewpassword = request.POST['renewpassword']
+
+		if not check_password(oldpassword, request.user.password):
+			return render(request, 'authentication/changePassword.html', {'error': 1})
+		else:
+			user = request.user
+			user.set_password(newpassword)
+			user.save()
+
+			return render(request, 'authentication/changePassword.html', {'error': 2})
+
+
+@login_required
 def signout(request):
 	if request.user.is_authenticated:
 		logout(request)

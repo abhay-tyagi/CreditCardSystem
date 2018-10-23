@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% load app_filters %}
 
 {% block content %}
 
+{% if request.user|has_group:"Merchant" %}
+	
 	<div class="ui center aligned container">
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -13,15 +16,25 @@
 		</div> 
 	</div>
 
-<script type="text/javascript">
-	if('{{flag}}' == 'cancelled') 
-	{
-		alert('Transaction cancelled');
-	}
-	else if('{{flag}}' == 'Credit Card Invalid')
-	{
-		alert('{{flag}}')
-	}
-</script>
+	<script type="text/javascript">
+		if('{{flag}}' == 'cancelled') 
+		{
+			alert('Transaction cancelled');
+		}
+		else if('{{flag}}' == 'Credit Card Invalid')
+		{
+			alert('{{flag}}')
+		}
+	</script>
+
+{% else %}
+
+	<div class="ui center aligned container">
+		<div class="ui segment">
+			<p>You can get all your information through this portal.</p>
+		</div>
+	</div>
+
+{% endif %}
 
 {% endblock %}
