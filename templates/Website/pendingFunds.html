@@ -4,6 +4,7 @@
 
 
 	<div class="container">
+		<center>
 		<h3>Pending payments</h3>
 
 		{% for key, val in pends.items %}
@@ -23,7 +24,7 @@
 		{% for tran in todays %}
 			<p>{{tran.customer.user.get_full_name}} - {{tran.time}} - {{tran.amount}}</p>
 		{% endfor %}
-
+	</center>
 	</div>
 
 
