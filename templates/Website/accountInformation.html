@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load app_filters %}
+
+{% block content %}
+
+	<p>Name of Account Holder: {{customer.user.get_full_name}}</p>
+	<p>Card Number: {{customer.credit_card_number.card_number}}</p>
+	<p>Name of Bank: {{customer.bank.name}}</p>
+	<p>PAN Number: {{customer.pan_number}}</p>
+
+	<br><br>
+
+	<p>Current Usage: Rs. {{customer.account.usage}}</p>
+	<p>Funds Remaining: Rs. {{diff}}</p>
+	<p>Maximum Limit: Rs. {{customer.account.max_limit}}</p>
+
+{% endblock %} 
