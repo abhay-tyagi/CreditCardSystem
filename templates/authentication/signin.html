@@ -32,12 +32,38 @@
 	
 		<div class="container">
 			<div class="ui center aligned segment"> 
+				{% if error == 1 %}
+					<div class="ui negative message"><div class="header"> Account already exists! </div></div>
+				{% elif error == 2 %}
+
+				<div class="ui negative message"><div class="header"> Invalid Account Number! </div></div>
+
+				{% elif error == "merchant" or error == "customer" %}
+
+				<div class="ui positive message"><div class="header"> Activation Successful! </div></div>
+
+				<script type="text/javascript">
+					alert("Activation Successful");
+					window.location.href = "/authentication/signin/" + "{{error}}/";
+				</script>
+
+				{% elif error == "/signin/merchant" or error == "/signin/customer" %}
+
+				<div class="ui positive message"><div class="header"> Account Created. Check email for activation link </div></div>
+
+				<script type="text/javascript">
+					alert("Account Created. Check email for activation link");
+					window.location.href = "/authentication" + "{{error}}/";
+				</script>
+
+				{% endif %}
+
 	            <form class="form-horizontal" method="POST">
 	              {% csrf_token %}
-
+	              {{error | safe}}
 	              <h2>Login To Continue</h2>
 
-	              <h5>{{error}}</h5>
+	                
 	                <span id="reauth-email" class="reauth-email"></span>
 	                <div class='form-group'>
 	                    <label class="control-label col-sm-2" for="inputEmail">Email: </label>
@@ -207,33 +233,6 @@
 
 {% endif %}
 
-{% if error == 1 %}
-
-<script type="text/javascript">
-	alert("Account already exists");
-</script>
-
-{% elif error == 2 %}
-
-<script type="text/javascript">
-	alert("Invalid Account Number");
-</script>
-
-{% elif error == "merchant" or error == "customer" %}
-
-<script type="text/javascript">
-	alert("Activation Successful");
-	window.location.href = "/authentication/signin/" + "{{error}}/";
-</script>
-
-{% elif error == "/signin/merchant" or error == "/signin/customer" %}
-
-<script type="text/javascript">
-	alert("Account Created. Check email for activation link");
-	window.location.href = "/authentication" + "{{error}}/";
-</script>
-
-{% endif %}
 
 <script type="text/javascript">
 	$('#pass').on('input', function() {
@@ -244,10 +243,12 @@
 	    if(p1 == p2)
 	    {
 	    	$('#submitBtn').removeClass('disabled');
+	    	$('#submitBtn').html('<i class="right arrow icon"></i>Create your account');
 	    }
 	    else
 	    {
-		    $('#submitBtn').addClass('disabled');	
+		    $('#submitBtn').addClass('disabled');
+		    $('#submitBtn').html('<i class="ban icon"></i>Password do not match!');	
 	    }
 	});
 
@@ -259,10 +260,12 @@
 	    if(p1 == p2)
 	    {
 	    	$('#submitBtn').removeClass('disabled');
+	    	$('#submitBtn').html('<i class="right arrow icon"></i>Create your account');
 	    }
 	    else
 	    {
-		    $('#submitBtn').addClass('disabled');	
+		    $('#submitBtn').addClass('disabled');
+		    $('#submitBtn').html('<i class="ban icon"></i>Password do not match!');
 	    }
 	});
 </script>
@@ -276,10 +279,12 @@
 	    if(p1 == p2)
 	    {
 	    	$('#submitBtn1').removeClass('disabled');
+	    	$('#submitBtn1').html('<i class="right arrow icon"></i>Create your account');
 	    }
 	    else
 	    {
-		    $('#submitBtn1').addClass('disabled');	
+		    $('#submitBtn1').addClass('disabled');
+		    $('#submitBtn1').html('<i class="ban icon"></i>Password do not match!');	
 	    }
 	});
 
@@ -291,10 +296,12 @@
 	    if(p1 == p2)
 	    {
 	    	$('#submitBtn1').removeClass('disabled');
+	    	$('#submitBtn1').html('<i class="right arrow icon"></i>Create your account');
 	    }
 	    else
 	    {
-		    $('#submitBtn1').addClass('disabled');	
+		    $('#submitBtn1').addClass('disabled');
+		    $('#submitBtn1').html('<i class="ban icon"></i>Password do not match!');
 	    }
 	});
 

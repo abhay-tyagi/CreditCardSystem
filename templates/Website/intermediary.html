@@ -4,39 +4,44 @@
 
 	<div class="ui center aligned container">
 
-		<p>{{card.card_number}}</p>
-		<p>{{card.expiry_date}}</p>
-		<p>{{card.owner.username}}</p>
+		<b>Card Number: </b><p>{{card.card_number}}</p>
+		<b>Expiry Date: </b><p>{{card.expiry_date}}</p>
+		<b>Merchant ID: </b><p>{{card.owner.username}}</p>
 
 	</div>
-
-	<form method="POST" enctype='multipart/form-data' action='/transactionFinal/' role='form'>
-		{% csrf_token %}
-        <div class="form-group">
-        	<label class="control-label" for="amount">Merchant enter amount: </label>
-          	<input id="amount" step="0.01" name="amount" type="number" class="form-control" required>
-        </div>
-
-        <button onclick="showRest();" id='restBtn' type="button">Confirm</button>
-
-        <div id='remDet' class="hidden">
+	<br>
+	<div class="ui center aligned container">
+		<form method="POST" enctype='multipart/form-data' action='/transactionFinal/' role='form'>
+			{% csrf_token %}
 	        <div class="form-group">
-	        	<label class="control-label" for="pin">PIN: </label>
-	          	<input id="pin" name="pin" type="password" maxlength="4" class="form-control" required>
+	        	<label class="control-label" for="amount">Merchant Enter Amount: </label><br>
+	          	<div class="ui input"><input id="amount" step="0.01" name="amount" type="number" class="form-control" required></div>
 	        </div>
-	        <input type="text" name="cardno" value="{{card.card_number}}" class="hidden">
-	        <input type="text" name="cardown" value="{{card.owner.username}}" class="hidden">
 
-	        <button class="ui large green button" type="submit">Submit</button>
-    	</div>
-	</form>
+	        <button class="ui large green button" onclick="showRest();" id='restBtn' type="button">Confirm</button>
+
+	        <div id='remDet' class="hidden">
+		        <div class="form-group">
+		        	<label class="control-label" for="pin">PIN: </label><br>
+		          	<div class="ui input"><input id="pin" name="pin" type="password" maxlength="4" class="form-control" required></div>
+		        </div>
+		        <input type="text" name="cardno" value="{{card.card_number}}" class="hidden">
+		        <input type="text" name="cardown" value="{{card.owner.username}}" class="hidden">
+
+		        <button class="ui large green button" type="submit">Submit</button>
+	    	</div>
+		</form>
+	</div>
 
 
 <script type="text/javascript">
 	function showRest()
 	{
-		if($('#amount').val() != '')
+		if($('#amount').val() != ''){
 			$('#remDet').removeClass('hidden');
+			$('#restBtn').hide();
+		}
+
 	}
 </script>
 

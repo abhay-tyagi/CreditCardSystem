@@ -29,9 +29,9 @@ def signin(request, arg=''):
 		user = authenticate(username = user_name, password = password)
 
 		if user == None:
-			return render(request, 'authentication/signin.html', {'error' : 'User-Name/Password Invalid', 'flag': category, 'banks': Bank.objects.all()})
+			return render(request, 'authentication/signin.html', {'error' : '<div class="ui negative message"><div class="header"> User-Name/Password Invalid! </div></div>', 'flag': category, 'banks': Bank.objects.all()})
 		elif user.is_active == False:
-			return render(request, 'authentication/signin.html', {'error' : 'Account not activated.', 'flag': category, 'banks': Bank.objects.all()})
+			return render(request, 'authentication/signin.html', {'error' : '<div class="ui negative message"><div class="header"> Account not activated. </div></div>', 'flag': category, 'banks': Bank.objects.all()})
 
 		login(request, user)
 		return redirect('/')
