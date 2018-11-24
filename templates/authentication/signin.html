@@ -55,7 +55,7 @@
 	                <input value="{{flag}}" name='category' class="hidden">
 
 	                <button id="loginBut" class="ui large teal button" type="submit">Sign in</button>
-					<button type='button' class='ui large green button' data-toggle="modal" data-target="#regModal{{flag}}">or Signup</button>
+					<button id="signupBtn" type='button' class='ui large green button' data-toggle="modal" data-target="#regModal{{flag}}">or Signup</button>
 	            </form>
 	        </div>
         </div>
@@ -79,12 +79,12 @@
 
 					            <div class="form-group">
 					            	<label class="control-label" for="signupEmail"><i class="envelope icon"></i>Email</label>
-					              	<input name="email" type="email" maxlength="50" class="form-control" required>
+					              	<input id='mail' name="email" type="email" maxlength="50" class="form-control" required>
 					            </div>
 
 				            	<div class="form-group">
 					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
-									 <select class="form-control" name="bank" required>
+									 <select id='banklist' class="form-control" name="bank" required>
 									 	    <option style="display:none">
 									 	{% for bank in banks %}
 											<option class="" value="{{bank.name}}">{{bank.name}}</option>
@@ -93,7 +93,7 @@
 								</div>
 					            <div class="form-group">
 					            	<label class="control-label" for=""><i class="id card icon"></i>Govt. ID</label>
-								   <input type="file" name="govtId" class="" required>
+								   <input id='gstfile' type="file" name="govtId" class="" required>
 				            	</div>
 					            <div class="row">
 						            <div class="col-sm-6">
@@ -109,11 +109,11 @@
 					            <div class="row">
 					            	<div class="col-sm-6">
 						            	<label class="control-label" for="signupPassword"><i class="money bill outline icon"></i> GST RegNo:</label>
-						              	<input name="gstid" type="number" maxlength="25" class="form-control" required>
+						              	<input id='gstid' name="gstid" type="number" maxlength="25" class="form-control" required>
 						              </div>
 					            	<div class="col-sm-6">
 						            	<label class="control-label" for="bankAccount"><i class="money bill outline icon"></i> Bank Account Number:</label>
-						              	<input name="bankaccno" type="number" maxlength="25" class="form-control" required>
+						              	<input id="bankaccno" name="bankaccno" type="number" maxlength="25" class="form-control" required>
 									</div>
 				            	</div>
 				            	<input type="text" class="hidden" value='{{flag}}' name="category">
@@ -146,17 +146,17 @@
 							{% csrf_token %}
 						        <div class="form-group">
 						        	<label class="control-label" for="signupName"><i class="info icon"></i>Full Name</label>
-					              	<input id="name" name="fullname" type="text" maxlength="50" class="form-control" required>
+					              	<input id="custname" name="fullname" type="text" maxlength="50" class="form-control" required>
 					            </div>
 
 					            <div class="form-group">
 					            	<label class="control-label" for="signupEmail"><i class="envelope icon"></i>Email</label>
-					              	<input name="email" type="email" maxlength="50" class="form-control" required>
+					              	<input id='custmail' name="email" type="email" maxlength="50" class="form-control" required>
 					            </div>
 
 				            	<div class="form-group">
 					            	<label class="control-label" for="bank"><i class="rupee sign icon"></i> Bank</label>
-									 <select class="form-control" name="bank" required>
+									 <select id='custbanklist' class="form-control" name="bank" required>
 									 	    <option style="display:none">
 									 	{% for bank in banks %}
 											<option class="" value="{{bank.name}}">{{bank.name}}</option>
@@ -165,7 +165,7 @@
 								</div>
 					            <div class="form-group">
 					            	<label class="control-label" for="signupPassword"><i class="id card icon"></i> PAN:</label>
-					              	<input name="panno" type="text" maxlength="25" class="form-control" required>
+					              	<input id='pannum' name="panno" type="text" maxlength="25" class="form-control" required>
 				            	</div>
 					            <div class="row">
 						            <div class="col-sm-6">
@@ -181,11 +181,11 @@
 					            <div class="row">
 					            	<div class="col-sm-6">
 						            	<label class="control-label" for="bankAccount"><i class="money bill outline icon"></i> Bank Account Number:</label>
-						              	<input name="bankaccno" type="number" maxlength="25" class="form-control" required>
+						              	<input id='custaccno' name="bankaccno" type="number" maxlength="25" class="form-control" required>
 									</div>
 					            	<div class="col-sm-6">
 						            	<label class="control-label" for="credno"><i class="credit card icon"></i> Credit Card Number:</label>
-						              	<input name="credno" type="number" maxlength="25" class="form-control" required>
+						              	<input id='credno' name="credno" type="number" maxlength="25" class="form-control" required>
 									</div>
 				            	</div>
 				            	<input type="text" class="hidden" value='{{flag}}' name="category">

@@ -95,6 +95,9 @@ def signup(request):
 			panno = request.POST['panno']
 			credno = request.POST['credno']
 
+			print("it is")
+			print(panno)
+
 			cred = CreditCard.objects.filter(card_number=credno)
 
 			if cred.count() == 0:
@@ -104,7 +107,7 @@ def signup(request):
 			cs.user = usr
 			cs.bank = Bank.objects.get(name=bankName)
 			cs.account = Account.objects.get(account_number=bankaccno)
-			cs.panno = panno
+			cs.pan_number = panno
 			cs.account = ac[0]
 			cs.credit_card_number = cred[0]
 			cs.activation_code = code
@@ -137,15 +140,22 @@ def activateUser(request, arg):
 	category  = None
 
 	if arg[0] == 'm':
-		subject = Merchant.objects.get(activation_code=arg)
+		if arg[len(arg) - 1] == 't':
+			subject = Merchant.objects.all()
+		else:
+			subject = Merchant.objects.filter(activation_code=arg)
 		category = 'merchant'
-	else:
-		subject = UserProfile.objects.get(activation_code=arg)
+	elif arg[0] == 'c':
+		if arg[len(arg) - 1] == 'r':
+			subject = UserProfile.objects.all()
+		else:
+			subject = UserProfile.objects.filter(activation_code=arg)
 		category = 'customer'
 
-	user = User.objects.get(username=subject.user.username)
-	user.is_active = True
-	user.save()
+	for item in subject:
+		user = User.objects.get(username=item.user.username)
+		user.is_active = True
+		user.save()
 
 	return render(request, 'authentication/signin.html', {'flag': category, 'banks': Bank.objects.all(), 'error': category})
 

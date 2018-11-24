@@ -1,0 +1,341 @@
+1543080110891	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.t3qyN1ZUZObq"
+1543080113976	Marionette	INFO	Listening on port 43991
+1543080114002	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543080114193	Marionette	INFO	Stopped listening on port 43991
+JavaScript error: resource://activity-stream/lib/ActivityStreamPrefs.jsm, line 29: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIPrefBranch.removeObserver]
+[Parent 5815, Gecko_IOThread] WARNING: pipe error (80): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: , line 0: AbortError: A request was aborted, for example through a call to IDBTransaction.abort.
+JavaScript error: , line 0: AbortError: A request was aborted, for example through a call to IDBTransaction.abort.
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+
+###!!! [Parent][DispatchAsyncMessage] Error: PBackgroundIDBFactory::Msg_PBackgroundIDBFactoryRequestConstructor Value error: message was deserialized, but contained an illegal value
+
+
+###!!! [Parent][DispatchAsyncMessage] Error: PBackgroundIDBFactory::Msg_PBackgroundIDBFactoryRequestConstructor Value error: message was deserialized, but contained an illegal value
+
+1543080166667	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Ghk587m5Qjhj"
+1543080169344	Marionette	INFO	Listening on port 44207
+1543080169377	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543080181161	Marionette	INFO	Stopped listening on port 44207
+1543080225690	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.xPL3BtbIMMNH"
+1543080228445	Marionette	INFO	Listening on port 34811
+1543080228510	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543080234798	Marionette	INFO	Stopped listening on port 34811
+[Parent 6394, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 6394, Gecko_IOThread] WARNING: pipe error (80): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543080269946	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.XXjwclM0FAcL"
+1543080272591	Marionette	INFO	Listening on port 45989
+1543080272659	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543080421812	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.zpxvrqatr3So"
+1543080424417	Marionette	INFO	Listening on port 33275
+1543080424422	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543080672400	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.7apw9AyMMj21"
+1543080675008	Marionette	INFO	Listening on port 33539
+1543080675111	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543080675160	Marionette	INFO	Stopped listening on port 33539
+JavaScript error: resource://activity-stream/lib/ActivityStreamPrefs.jsm, line 29: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIPrefBranch.removeObserver]
+[Parent 7233, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 7233, Gecko_IOThread] WARNING: pipe error (80): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/IndexedDB.jsm, line 349: UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code.
+JavaScript error: resource://gre/modules/IndexedDB.jsm, line 349: UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code.
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+
+###!!! [Parent][DispatchAsyncMessage] Error: PBackgroundIDBFactory::Msg_PBackgroundIDBFactoryRequestConstructor Value error: message was deserialized, but contained an illegal value
+
+
+###!!! [Parent][DispatchAsyncMessage] Error: PBackgroundIDBFactory::Msg_PBackgroundIDBFactoryRequestConstructor Value error: message was deserialized, but contained an illegal value
+
+1543080696533	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ESMjGa3NAthc"
+1543080699056	Marionette	INFO	Listening on port 41001
+1543080699143	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+1543081169066	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.cF5EY42SMD2I"
+1543081171656	Marionette	INFO	Listening on port 45905
+1543081171673	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543081183267	Marionette	INFO	Stopped listening on port 45905
+[Parent 7905, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543081409866	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.YVKIxai7dgQr"
+1543081412538	Marionette	INFO	Listening on port 34529
+1543081412572	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543081423769	Marionette	INFO	Stopped listening on port 34529
+[Parent 8303, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543081433631	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.98YuAw1Dfc3G"
+1543081436408	Marionette	INFO	Listening on port 42329
+1543081436442	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543081443028	Marionette	INFO	Stopped listening on port 42329
+[Parent 8560, Gecko_IOThread] WARNING: pipe error (64): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 8560, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543081483794	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.mu1Lp4Ng4hc7"
+1543081486433	Marionette	INFO	Listening on port 43147
+1543081486504	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543081493109	Marionette	INFO	Stopped listening on port 43147
+[Parent 8808, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543081547864	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.w6I9YiDcHJXO"
+1543081551110	Marionette	INFO	Listening on port 39513
+1543081551184	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543081562650	Marionette	INFO	Stopped listening on port 39513
+[Parent 9078, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082078813	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.03hzgJKoI148"
+1543082081920	Marionette	INFO	Listening on port 42013
+1543082081930	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082087924	Marionette	INFO	Stopped listening on port 42013
+[Parent 9718, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 9718, Gecko_IOThread] WARNING: pipe error (83): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082088977	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.zBkw0cpYyAiI"
+1543082091892	Marionette	INFO	Listening on port 43919
+1543082091993	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082103346	Marionette	INFO	Stopped listening on port 43919
+[Parent 9959, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082185380	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.07AhiAOjFVyq"
+1543082188088	Marionette	INFO	Listening on port 45471
+1543082188093	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082199945	Marionette	INFO	Stopped listening on port 45471
+[Parent 10273, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082200756	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.04dPN431mne9"
+1543082203326	Marionette	INFO	Listening on port 40421
+1543082203371	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082215016	Marionette	INFO	Stopped listening on port 40421
+[Parent 10510, Gecko_IOThread] WARNING: pipe error (38): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082382939	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.tgst8s9fB9Bx"
+1543082385598	Marionette	INFO	Listening on port 42651
+1543082385649	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082391881	Marionette	INFO	Stopped listening on port 42651
+[Parent 10847, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 10847, Gecko_IOThread] WARNING: pipe error (91): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543082392803	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.bHYox9lMSMYN"
+1543082395432	Marionette	INFO	Listening on port 36479
+1543082395528	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082401850	Marionette	INFO	Stopped listening on port 36479
+[Parent 11075, Gecko_IOThread] WARNING: pipe error (80): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543082434054	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.O51wFHcHCFKu"
+1543082436726	Marionette	INFO	Listening on port 44391
+1543082436765	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082443193	Marionette	INFO	Stopped listening on port 44391
+[Parent 11336, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 11336, Gecko_IOThread] WARNING: pipe error (91): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543082444129	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.aQvTb1QYiCqd"
+1543082446643	Marionette	INFO	Listening on port 39955
+1543082446738	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082453413	Marionette	INFO	Stopped listening on port 39955
+[Parent 11588, Gecko_IOThread] WARNING: pipe error (39): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 11588, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082514141	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.T8wXmPgjiYZ7"
+1543082517394	Marionette	INFO	Listening on port 42255
+1543082517467	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082523891	Marionette	INFO	Stopped listening on port 42255
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543082525029	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.uJAMh0mfwRwM"
+1543082528004	Marionette	INFO	Listening on port 39325
+1543082528042	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082534640	Marionette	INFO	Stopped listening on port 39325
+[Parent 12117, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543082674489	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.XvKmGXaCiYCj"
+1543082677053	Marionette	INFO	Listening on port 41795
+1543082677101	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082688454	Marionette	INFO	Stopped listening on port 41795
+[Parent 12408, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543082689374	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.HpRsENwpOcZl"
+1543082692095	Marionette	INFO	Listening on port 41545
+1543082692183	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543082703730	Marionette	INFO	Stopped listening on port 41545
+[Parent 12657, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543083195828	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8DEdaJyt70vt"
+1543083198430	Marionette	INFO	Listening on port 37493
+1543083198440	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083210937	Marionette	INFO	Stopped listening on port 37493
+[Parent 13051, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543083211879	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.YU0sysd9tG5o"
+1543083214404	Marionette	INFO	Listening on port 34513
+1543083214494	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083219170	Marionette	INFO	Stopped listening on port 34513
+[Parent 13298, Gecko_IOThread] WARNING: pipe error (83): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 13298, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 841: Error: Connection is not open.
+1543083484843	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.UrZ7ONP1WC1U"
+1543083487867	Marionette	INFO	Listening on port 35063
+1543083487964	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083499583	Marionette	INFO	Stopped listening on port 35063
+[Parent 13627, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543083500659	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.7hfQKiQlQp7U"
+1543083503209	Marionette	INFO	Listening on port 41779
+1543083503276	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083514654	Marionette	INFO	Stopped listening on port 41779
+[Parent 13866, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543083901630	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.QzuBWWmCLzSU"
+1543083904264	Marionette	INFO	Listening on port 45753
+1543083904365	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083916057	Marionette	INFO	Stopped listening on port 45753
+[Parent 14403, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543083917004	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.BmkZnpaIlw8y"
+1543083920003	Marionette	INFO	Listening on port 36793
+1543083920020	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083926128	Marionette	INFO	Stopped listening on port 36793
+[Parent 14648, Gecko_IOThread] WARNING: pipe error (64): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 14648, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543083927164	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.aWQc5hZ4gGNX"
+1543083929722	Marionette	INFO	Listening on port 39195
+1543083929773	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543083941448	Marionette	INFO	Stopped listening on port 39195
+1543084111431	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.kKaF3AAZlbDd"
+1543084114287	Marionette	INFO	Listening on port 37241
+1543084114346	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543084125676	Marionette	INFO	Stopped listening on port 37241
+[Parent 15231, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543084126715	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.UlyefsMY4SRM"
+1543084129406	Marionette	INFO	Listening on port 43693
+1543084129431	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543084135237	Marionette	INFO	Stopped listening on port 43693
+
+(/usr/lib/firefox/firefox:15608): dconf-WARNING **: 23:58:55.294: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+[Parent 15485, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 15485, Gecko_IOThread] WARNING: pipe error (80): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543084136183	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.EE98LIh3jhOo"
+1543084139114	Marionette	INFO	Listening on port 36495
+1543084139202	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543084150793	Marionette	INFO	Stopped listening on port 36495
+[Parent 15718, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543084380644	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.xye9FnaJp3hK"
+1543084383239	Marionette	INFO	Listening on port 41951
+1543084383262	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543084394832	Marionette	INFO	Stopped listening on port 41951
+[Parent 16134, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543084395777	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8ocwg4juL7rl"
+1543084398357	Marionette	INFO	Listening on port 46459
+1543084398387	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543084404336	Marionette	INFO	Stopped listening on port 46459
+[Parent 16370, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 16370, Gecko_IOThread] WARNING: pipe error (39): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543084405272	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.9gX0yh8wZ0gx"
+1543084407892	Marionette	INFO	Listening on port 42473
+1543084408000	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543084428685	Marionette	INFO	Stopped listening on port 42473
+console.error: "Tried to send a 'tabDetached' event on an already destroyed actor 'frameTarget'"
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+[Parent 16605, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543085543994	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.87j6D8JHRNqE"
+1543085546676	Marionette	INFO	Listening on port 45251
+1543085546710	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543085557587	Marionette	INFO	Stopped listening on port 45251
+[Parent 17899, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543085559562	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.uIahmGciR3iL"
+1543085562311	Marionette	INFO	Listening on port 46049
+1543085562388	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543085573470	Marionette	INFO	Stopped listening on port 46049
+[Parent 18145, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543085959540	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.rV78a2fOFSfM"
+1543085962516	Marionette	INFO	Listening on port 35501
+1543085962557	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543085973689	Marionette	INFO	Stopped listening on port 35501
+[Parent 18532, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543085974648	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.X4eZzN7fzj3T"
+1543085977507	Marionette	INFO	Listening on port 46715
+1543085977558	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543085988828	Marionette	INFO	Stopped listening on port 46715
+[Parent 18779, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543086281065	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.96Jq4HklEg6y"
+1543086283916	Marionette	INFO	Listening on port 46321
+1543086284000	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543086295695	Marionette	INFO	Stopped listening on port 46321
+[Parent 19094, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543086296742	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.wSCeuWrTvcJH"
+1543086299357	Marionette	INFO	Listening on port 38323
+1543086299451	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543086310520	Marionette	INFO	Stopped listening on port 38323
+[Parent 19324, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543086356368	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.1sqhA6VpK92W"
+1543087216703	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ehBygoICam1k"
+1543087219776	Marionette	INFO	Listening on port 41825
+1543087219826	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543087231319	Marionette	INFO	Stopped listening on port 41825
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+[Parent 19865, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543087232276	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.EwpgTQbJEsPd"
+1543087275943	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.P8G7PhCatecc"
+1543087278856	Marionette	INFO	Listening on port 35631
+1543087279009	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543087290123	Marionette	INFO	Stopped listening on port 35631
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x4C0008,name=PHttpChannel::Msg_DocumentChannelCleanup) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+[Parent 20224, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543087291164	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.J0srDFZMVBUX"
+1543087378053	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ANzvJhFhBA6K"
+1543087381119	Marionette	INFO	Listening on port 42965
+1543087381165	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543087393212	Marionette	INFO	Stopped listening on port 42965
+[Parent 20631, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+[Parent 20631, Gecko_IOThread] WARNING: pipe error (64): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
+1543087394232	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.NAkoMSVqp1gr"
+1543087396915	Marionette	INFO	Listening on port 33935
+1543087396941	Marionette	WARN	TLS certificate errors will be ignored for this session
+1543087409313	Marionette	INFO	Stopped listening on port 33935
+[Parent 20881, Gecko_IOThread] WARNING: pipe error (77): Connection reset by peer: file /build/firefox-JcIUVH/firefox-63.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 356
