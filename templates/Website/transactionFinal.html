@@ -4,16 +4,16 @@
 
 
 	<div class="ui center aligned container">
-		<h3>transaction done</h3>
+		<h2 class="ui header">Transaction has been completed successfully!</h2>
 
-		<p>{{trans.merchant.get_full_name}}</p>
-		<p>{{trans.customer.get_full_name}}</p>
-		<p>{{trans.amount}}</p>
-		<p>{{trans.date}}</p>
+		<!-- <b>Merchant Name: </b><p>{{trans.merchant.get_full_name}}</p>
+		<b>Customer Name: </b><p>{{trans.customer.get_full_name}}</p> -->
+		<b>Amount: </b><p>{{trans.amount}}</p>
+		<b>Transaction Date: </b><p>{{trans.date}}</p>
 
-	</div>
+	</div><br>
 	<center>
-		<p>You will automatically be redirected....</p>
+		<h3 class="ui header">You will automatically be redirected....</h3>
 	</center>
 
 <script>

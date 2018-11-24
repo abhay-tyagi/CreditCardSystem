@@ -4,26 +4,62 @@
 {% block content %}
 	<div class="ui center aligned container">
 		{% if flag == 2 %}
-			
-			{% for tran in allTrans %}
-				<p>
-					Bought from {{tran.merchant}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}} using {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}
-				</p>
-			{% endfor %}
+
+			<table class="ui celled table">
+			  <thead>
+			    <tr>
+			    	<th>Merchant Name</th>
+			    	<th>Amount</th>
+			    	<th>Transaction Date</th>
+			    	<th>Transaction Time</th>
+			    	<th>Bank Name</th>
+			    	<th>Card No.</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	{% for tran in todays %}
+					<tr>
+						<td data-label="Merchant Name">{{tran.merchant}}</td>
+						<td data-label="Amount">₹{{tran.amount}}</td>
+						<td data-label="Transaction Date">{{tran.date}}</td>
+						<td data-label="Transaction Time">{{tran.time}}</td>
+						<td data-label="Bank Name">{{tran.customer.bank.name}}</td>
+						<td data-label="Card No.">{{tran.credit_card.card_number}}</td>
+					</tr>
+				{% empty %}
+					<div class="ui negative message"><div class="header"> No records! </div></div>
+				{% endfor %}
+			  </tbody>
+			</table>
 
 		{% elif flag == 1 %}
 
-		{% for tran in allTrans %}
-			<p>
-				Sold to {{tran.customer}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}}. Customer used {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}.
-
-				{% if tran.status == True %}
-					-> Paid
-				{% else %}
-					-> Pending
-				{% endif %}
-			</p>
-		{% endfor %}
+			<table class="ui celled table">
+				  <thead>
+				    <tr>
+				    	<th>Merchant Name</th>
+				    	<th>Amount</th>
+				    	<th>Transaction Date</th>
+				    	<th>Transaction Time</th>
+				    	<th>Bank Name</th>
+				    	<th>Card No.</th>
+				  	</tr>
+				  </thead>
+				  <tbody>
+				  	{% for tran in allTrans %}
+						<tr>
+							<td data-label="Customer Name">{{tran.customer}}</td>
+							<td data-label="Amount">₹{{tran.amount}}</td>
+							<td data-label="Transaction Date">{{tran.date}}</td>
+							<td data-label="Transaction Time">{{tran.time}}</td>
+							<td data-label="Bank Name">{{tran.customer.bank.name}}</td>
+							<td data-label="Card No.">{{tran.credit_card.card_number}}</td>
+						</tr>
+					{% empty %}
+						<div class="ui negative message"><div class="header"> No records! </div></div>
+					{% endfor %}
+				  </tbody>
+			</table>
 
 		{% endif %}
 	</div>

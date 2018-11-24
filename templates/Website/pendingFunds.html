@@ -7,23 +7,56 @@
 		<center>
 			<h3>Pending payments</h3>
 
-				{% for key, val in pends.items %}
-					<p>
+			<table class="ui celled table">
+			  <thead>
+			    <tr>
+			    	<th>Date</th>
+			    	<th>Amount</th>
+			    	<th>Pay Fee</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	{% for key, val in pends.items %}
+					<tr>
 						<form method="POST" enctype='multipart/form-data' action='/payPending/' role='form'>
 							{% csrf_token %}
 						        <input type="text" name="date" value="{{key}}" class="hidden">
 						        <input type="text" name="amt" value="{{val}}" class="hidden">
-		        				{{key}} - {{val}} <button class="ui tiny yellow button" type="submit">Pay</button>
-					    	</div>
+		        				<td data-label="Date">{{key}}</td>
+		        				<td data-label="Amount">{{val}}</td> 
+		        				<td data-label="Pay Fee"><button class="ui tiny yellow button" type="submit">Pay</button></td>
 						</form>
-					</p>
+					</tr>
+				{% empty %}
+					<div class="ui negative message"><div class="header"> No records! </div></div>
 				{% endfor %}
+			  </tbody>
+			</table>
 
+				
+			<br>
 			<h3>Today's transactions</h3>
-
-			{% for tran in todays %}
-				<p>{{tran.customer.user.get_full_name}} - {{tran.time}} - {{tran.amount}}</p>
-			{% endfor %}
+			<table class="ui celled table">
+			  <thead>
+			    <tr>
+			    	<th>Customer Name</th>
+			    	<th>Time of Transaction</th>
+			    	<th>Amount</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	{% for tran in todays %}
+					<tr>
+						<td data-label="Customer Name">{{tran.customer.user.get_full_name}}</td>
+						<td data-label="Time of Transaction">{{tran.time}}</td>
+						<td data-label="Amount">{{tran.amount}}</td>
+					</tr>
+				{% empty %}
+					<div class="ui negative message"><div class="header"> No records! </div></div>
+				{% endfor %}
+			  </tbody>
+			</table>
+			
 		</center>
 	</div>
 

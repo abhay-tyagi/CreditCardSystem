@@ -44,7 +44,7 @@ def pendingFunds(request):
 	todays = []
 
 	for tran in trans:
-		if tran.date != datetime.date.today():
+		if tran.date == datetime.date.today():
 			todays.append(tran)
 		else:
 			if str(tran.date) in pends:
