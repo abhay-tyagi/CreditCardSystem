@@ -2,15 +2,17 @@
 {% load app_filters %}
 
 {% block content %}
+	<center>
+		<p>Name of Account Holder: {{customer.user.get_full_name}}</p>
+		<p>Card Number: {{customer.credit_card_number.card_number}}</p>
+		<p>Name of Bank: {{customer.bank.name}}</p>
+		<p>PAN Number: {{customer.pan_number}}</p>
 
-	<p>{{customer.user.get_full_name}}</p>
-	<p>{{customer.credit_card_number.card_number}}</p>
-	<p>{{customer.bank.name}}</p>
-	<p>{{customer.pan_number}}</p>
+		<br><br>
 
-	<br><br>
-
-	<p>{{customer.account.usage}}</p>
-	<p>{{customer.account.max_limit}}</p>
+		<p>Current Usage: Rs. {{customer.account.usage}}</p>
+		<p>Funds Remaining: Rs. {{diff}}</p>
+		<p>Maximum Limit: Rs. {{customer.account.max_limit}}</p>
+	</center>
 
 {% endblock %} 

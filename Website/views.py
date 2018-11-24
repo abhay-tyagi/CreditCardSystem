@@ -44,7 +44,7 @@ def pendingFunds(request):
 	todays = []
 
 	for tran in trans:
-		if tran.date == datetime.date.today():
+		if tran.date != datetime.date.today():
 			todays.append(tran)
 		else:
 			if str(tran.date) in pends:
@@ -188,4 +188,4 @@ def transactionHistory(request):
 def accountInformation(request):
 	allInfo = UserProfile.objects.get(user=request.user)
 
-	return render(request, 'Website/accountInformation.html', {'customer': allInfo})
+	return render(request, 'Website/accountInformation.html', {'customer': allInfo, 'diff': allInfo.account.max_limit-allInfo.account.usage})

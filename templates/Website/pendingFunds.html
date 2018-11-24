@@ -4,26 +4,27 @@
 
 
 	<div class="container">
-		<h3>Pending payments</h3>
+		<center>
+			<h3>Pending payments</h3>
 
-		{% for key, val in pends.items %}
-			<p>
-				<form method="POST" enctype='multipart/form-data' action='/payPending/' role='form'>
-					{% csrf_token %}
-				        <input type="text" name="date" value="{{key}}" class="hidden">
-				        <input type="text" name="amt" value="{{val}}" class="hidden">
-        				{{key}} - {{val}} <button class="ui tiny yellow button" type="submit">Pay</button>
-			    	</div>
-				</form>
-			</p>
-		{% endfor %}
+				{% for key, val in pends.items %}
+					<p>
+						<form method="POST" enctype='multipart/form-data' action='/payPending/' role='form'>
+							{% csrf_token %}
+						        <input type="text" name="date" value="{{key}}" class="hidden">
+						        <input type="text" name="amt" value="{{val}}" class="hidden">
+		        				{{key}} - {{val}} <button class="ui tiny yellow button" type="submit">Pay</button>
+					    	</div>
+						</form>
+					</p>
+				{% endfor %}
 
-		<h3>Today's transactions</h3>
+			<h3>Today's transactions</h3>
 
-		{% for tran in todays %}
-			<p>{{tran.customer.user.get_full_name}} - {{tran.time}} - {{tran.amount}}</p>
-		{% endfor %}
-
+			{% for tran in todays %}
+				<p>{{tran.customer.user.get_full_name}} - {{tran.time}} - {{tran.amount}}</p>
+			{% endfor %}
+		</center>
 	</div>
 
 

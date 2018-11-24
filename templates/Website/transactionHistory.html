@@ -2,29 +2,29 @@
 {% load app_filters %}
 
 {% block content %}
+	<div class="ui center aligned container">
+		{% if flag == 2 %}
+			
+			{% for tran in allTrans %}
+				<p>
+					Bought from {{tran.merchant}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}} using {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}
+				</p>
+			{% endfor %}
 
-{% if flag == 2 %}
+		{% elif flag == 1 %}
 
-	{% for tran in allTrans %}
-		<p>
-			Bought from {{tran.merchant}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}} using {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}
-		</p>
-	{% endfor %}
+		{% for tran in allTrans %}
+			<p>
+				Sold to {{tran.customer}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}}. Customer used {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}.
 
-{% elif flag == 1 %}
+				{% if tran.status == True %}
+					-> Paid
+				{% else %}
+					-> Pending
+				{% endif %}
+			</p>
+		{% endfor %}
 
-	{% for tran in allTrans %}
-		<p>
-			Sold to {{tran.customer}} for ₹{{tran.amount}} on {{tran.date}} {{tran.time}}. Customer used {{tran.customer.bank.name}} bank card number {{tran.credit_card.card_number}}.
-
-			{% if tran.status == True %}
-				-> Paid
-			{% else %}
-				-> Pending
-			{% endif %}
-		</p>
-	{% endfor %}
-
-{% endif %}
-
+		{% endif %}
+	</div>
 {% endblock %}

@@ -16,7 +16,7 @@ class UserProfile(models.Model):
 	credit_score = models.DecimalField(decimal_places=2, max_digits=10, default=0)
 	pan_number = models.CharField(max_length=10)
 	bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
-	account = models.ForeignKey(Account, on_delete=models.CASCADE)
+	account = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
 	activation_code = models.CharField(max_length=50, default='user')	
 
 	def __str__(self):
@@ -28,7 +28,7 @@ class Merchant(models.Model):
 	bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
 	govt_id = models.FileField(storage=private_storage, null=True)
 	gst_id = models.CharField(max_length=50)
-	account = models.ForeignKey(Account, on_delete=models.CASCADE)
+	account = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
 	activation_code = models.CharField(max_length=50, default='merchant') 
 
 	def __str__(self):
