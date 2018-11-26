@@ -16,6 +16,12 @@
 		</div> 
 	</div>
 
+  <form class="hidden" method="POST" action="/scanCard/">
+    {% csrf_token %}
+    <input type="text" class="hidden" id='credcardno' name="credno">
+    <button id='NoSubmit' class="hidden" type="submit"></button>
+  </form>
+
 	<script type="text/javascript">
 		if('{{flag}}' == 'cancelled') 
 		{
@@ -27,6 +33,8 @@
 		}
 	</script>
 {% endif %}
+
+
 {% if request.user|has_group:"Merchant" %}
 <center>
 <h1><i class="fa fa-heart" style="color: red"></i>
@@ -88,7 +96,7 @@
                       new TxtRotate(elements[i], JSON.parse(toRotate), period);
                     }
                   }
-                  // INJECT CSS
+
                   var css = document.createElement("style");
                   css.type = "text/css";
                   css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
@@ -157,7 +165,7 @@
                       new TxtRotate(elements[i], JSON.parse(toRotate), period);
                     }
                   }
-                  // INJECT CSS
+
                   var css = document.createElement("style");
                   css.type = "text/css";
                   css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";

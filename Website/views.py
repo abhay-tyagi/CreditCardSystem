@@ -48,9 +48,9 @@ def pendingFunds(request):
 			todays.append(tran)
 		else:
 			if str(tran.date) in pends:
-				pends[str(tran.date)] += float(tran.amount)
+				pends[str(tran.date)] += float(tran.amount) / 100
 			else:
-				pends[str(tran.date)] = float(tran.amount)
+				pends[str(tran.date)] = float(tran.amount) / 100
 
 	return render(request, 'Website/pendingFunds.html', {'pends': pends, 'todays': todays[::-1]})
 
@@ -104,10 +104,13 @@ def payPending(request):
 @login_required
 @user_passes_test(checkMerchant)
 def scanCard(request):
-	try:
-		cardNumber = Read_qr.funct()
-	except:
-		return render(request, 'Website/index.html', {'flag': 'cancelled'})
+	if request.method == 'GET':
+		try:
+			cardNumber = Read_qr.funct()
+		except:
+			return render(request, 'Website/index.html', {'flag': 'cancelled'})
+	else:
+		cardNumber = request.POST['credno']		
 
 	try:
 		card = CreditCard.objects.get(card_number=cardNumber)
@@ -118,6 +121,7 @@ def scanCard(request):
 		return render(request, 'Website/index.html', {'flag': 'Credit Card Invalid'})
 	except UserProfile.DoesNotExist:
 		return render(request, 'Website/index.html', {'flag': 'Credit Card Invalid'})
+
 
 
 @login_required
