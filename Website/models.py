@@ -32,7 +32,7 @@ class CreditCard(models.Model):
 	cvv = models.IntegerField()
 	expiry_date = models.DateField()
 	blocked = models.BooleanField()
-	owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+	owner = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
 	bank = models.ForeignKey(Bank, on_delete=models.CASCADE, null=True, blank=True)
 	pin = models.IntegerField(null=True)
 

@@ -6,7 +6,7 @@
 
 		<b>Card Number: </b><p>{{card.card_number}}</p>
 		<b>Expiry Date: </b><p>{{card.expiry_date}}</p>
-		<b>Merchant ID: </b><p>{{card.owner.username}}</p>
+		<b>Owner email: </b><p>{{card.owner.username}}</p>
 
 	</div>
 	<br>
@@ -28,7 +28,7 @@
 		        <input type="text" name="cardno" value="{{card.card_number}}" class="hidden">
 		        <input type="text" name="cardown" value="{{card.owner.username}}" class="hidden">
 
-		        <button class="ui large green button" type="submit">Submit</button>
+		        <button id='pinBtn' class="ui large green button" type="submit">Submit</button>
 	    	</div>
 		</form>
 	</div>
